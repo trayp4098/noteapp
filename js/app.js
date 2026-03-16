@@ -36,6 +36,17 @@ const APP_I18N = {
     hkNav: 'Навігація', hkSearch: 'Фокус на пошук', hkRandom: 'Випадкова нотатка', hkClose: 'Закрити / скинути вибір',
     hkTags: 'Теги', hkAddTag: 'Додати тег', hkAddTagAlt: 'Додати тег (альтернатива)', hkRemoveTag: 'Видалити останній тег',
     hkTip: 'Alt замість Ctrl — щоб не конфліктувати з браузером',
+    welcome: 'Ласкаво просимо', bye: 'До побачення!', errLoad: 'Помилка завантаження', noContent: 'Додайте назву або текст',
+    saved: 'Нотатку збережено', errSave: 'Помилка збереження', selectNote: 'Оберіть нотатку',
+    deleted: 'Нотатку видалено', errDelete: 'Помилка видалення', pinned: 'Закріплено', unpinned: 'Відкріплено',
+    errPin: 'Помилка', archived: 'В архів', unarchived: 'Відновлено', noUndo: 'Немає дій для скасування',
+    restored: 'Нотатку відновлено', errRestore: 'Помилка відновлення', selectForHistory: 'Спочатку оберіть нотатку',
+    errHistory: 'Помилка завантаження історії', versionRestored: 'Версію відновлено — натисніть Зберегти',
+    noNotes: 'Немає нотаток', randomNote: '🎲 Випадкова нотатка!', focusMode: 'Режим фокусу — Escape для виходу',
+    ctxPinned: 'Закріплено', ctxUnpinned: 'Відкріплено', ctxArchived: 'В архів', ctxRestored: 'Відновлено', ctxDeleted: 'Видалено',
+    draftRestored: 'Чорновик відновлено', exported: 'Експортовано', errImport: 'Помилка імпорту',
+    deleteConfirm: 'Видалити', restoreVersionConfirm: 'Відновити цю версію? Поточний текст буде замінено.',
+    undoHint: 'Нотатку видалено',
   },
   en: {
     appTitle: 'Notes App', templates: 'Templates', search: 'Search… (Alt+F)',
@@ -57,6 +68,19 @@ const APP_I18N = {
     hkNav: 'Navigation', hkSearch: 'Focus search', hkRandom: 'Random note', hkClose: 'Close / deselect',
     hkTags: 'Tags', hkAddTag: 'Add tag', hkAddTagAlt: 'Add tag (alternative)', hkRemoveTag: 'Remove last tag',
     hkTip: 'Alt instead of Ctrl — to avoid browser conflicts',
+    // Toasts
+    welcome: 'Welcome', bye: 'Goodbye!', errLoad: 'Load error', noContent: 'Add title or text',
+    saved: 'Note saved', errSave: 'Save error', selectNote: 'Select a note first',
+    deleted: 'Note deleted', errDelete: 'Delete error', pinned: 'Pinned', unpinned: 'Unpinned',
+    errPin: 'Error', archived: 'Archived', unarchived: 'Restored', noUndo: 'Nothing to undo',
+    restored: 'Note restored', errRestore: 'Restore error', selectForHistory: 'Select a note first',
+    errHistory: 'History load error', versionRestored: 'Version restored — press Save',
+    noNotes: 'No notes', randomNote: '🎲 Random note!', focusMode: 'Focus mode — Escape to exit',
+    ctxPinned: 'Pinned', ctxUnpinned: 'Unpinned', ctxArchived: 'Archived', ctxRestored: 'Restored',
+    ctxDeleted: 'Deleted', draftRestored: 'Draft restored',
+    exported: 'Exported', errImport: 'Import error', fileError: 'File must be an array',
+    deleteConfirm: 'Delete', deleteCancel: 'Cancel', restoreVersionConfirm: 'Restore version? Current text will be replaced.',
+    undoHint: 'Note deleted · Alt+Z to restore',
   },
   ru: {
     appTitle: 'Notes App', templates: 'Шаблоны', search: 'Поиск… (Alt+F)',
@@ -79,6 +103,17 @@ const APP_I18N = {
     hkNav: 'Навигация', hkSearch: 'Фокус на поиск', hkRandom: 'Случайная заметка', hkClose: 'Закрыть / сбросить выбор',
     hkTags: 'Теги', hkAddTag: 'Добавить тег', hkAddTagAlt: 'Добавить тег (альтернатива)', hkRemoveTag: 'Удалить последний тег',
     hkTip: 'Alt вместо Ctrl — чтобы не конфликтовать с браузером',
+    welcome: 'Добро пожаловать', bye: 'До свидания!', errLoad: 'Ошибка загрузки', noContent: 'Добавьте заголовок или текст',
+    saved: 'Заметка сохранена', errSave: 'Ошибка сохранения', selectNote: 'Выберите заметку',
+    deleted: 'Заметка удалена', errDelete: 'Ошибка удаления', pinned: 'Закреплено', unpinned: 'Откреплено',
+    errPin: 'Ошибка', archived: 'В архив', unarchived: 'Восстановлено', noUndo: 'Нечего отменять',
+    restored: 'Заметка восстановлена', errRestore: 'Ошибка восстановления', selectForHistory: 'Сначала выберите заметку',
+    errHistory: 'Ошибка загрузки истории', versionRestored: 'Версия восстановлена — нажмите Сохранить',
+    noNotes: 'Нет заметок', randomNote: '🎲 Случайная заметка!', focusMode: 'Режим фокуса — Escape для выхода',
+    ctxPinned: 'Закреплено', ctxUnpinned: 'Откреплено', ctxArchived: 'В архив', ctxRestored: 'Восстановлено', ctxDeleted: 'Удалено',
+    draftRestored: 'Черновик восстановлен', exported: 'Экспортировано', errImport: 'Ошибка импорта',
+    deleteConfirm: 'Удалить', restoreVersionConfirm: 'Восстановить эту версию? Текущий текст будет заменён.',
+    undoHint: 'Заметка удалена',
   },
   de: {
     appTitle: 'Notes App', templates: 'Vorlagen', search: 'Suchen… (Alt+F)',
@@ -100,6 +135,17 @@ const APP_I18N = {
     hkNav: 'Navigation', hkSearch: 'Suche fokussieren', hkRandom: 'Zufällige Notiz', hkClose: 'Schließen',
     hkTags: 'Tags', hkAddTag: 'Tag hinzufügen', hkAddTagAlt: 'Tag hinzufügen (alternativ)', hkRemoveTag: 'Letzten Tag entfernen',
     hkTip: 'Alt statt Ctrl — um Browser-Konflikte zu vermeiden',
+    welcome: 'Willkommen', bye: 'Auf Wiedersehen!', errLoad: 'Ladefehler', noContent: 'Titel oder Text hinzufügen',
+    saved: 'Notiz gespeichert', errSave: 'Speicherfehler', selectNote: 'Notiz auswählen',
+    deleted: 'Notiz gelöscht', errDelete: 'Löschfehler', pinned: 'Angeheftet', unpinned: 'Gelöst',
+    errPin: 'Fehler', archived: 'Archiviert', unarchived: 'Wiederhergestellt', noUndo: 'Nichts rückgängig zu machen',
+    restored: 'Notiz wiederhergestellt', errRestore: 'Wiederherstellungsfehler', selectForHistory: 'Zuerst eine Notiz auswählen',
+    errHistory: 'Verlauf konnte nicht geladen werden', versionRestored: 'Version wiederhergestellt — Speichern drücken',
+    noNotes: 'Keine Notizen', randomNote: '🎲 Zufällige Notiz!', focusMode: 'Fokusmodus — Escape zum Beenden',
+    ctxPinned: 'Angeheftet', ctxUnpinned: 'Gelöst', ctxArchived: 'Archiviert', ctxRestored: 'Wiederhergestellt', ctxDeleted: 'Gelöscht',
+    draftRestored: 'Entwurf wiederhergestellt', exported: 'Exportiert', errImport: 'Importfehler',
+    deleteConfirm: 'Löschen', restoreVersionConfirm: 'Diese Version wiederherstellen? Der aktuelle Text wird ersetzt.',
+    undoHint: 'Notiz gelöscht',
   },
   fr: {
     appTitle: 'Notes App', templates: 'Modèles', search: 'Rechercher… (Alt+F)',
@@ -121,6 +167,17 @@ const APP_I18N = {
     hkNav: 'Navigation', hkSearch: 'Rechercher', hkRandom: 'Note aléatoire', hkClose: 'Fermer',
     hkTags: 'Tags', hkAddTag: 'Ajouter tag', hkAddTagAlt: 'Ajouter tag (alt)', hkRemoveTag: 'Supprimer dernier tag',
     hkTip: 'Alt au lieu de Ctrl — pour éviter les conflits navigateur',
+    welcome: 'Bienvenue', bye: 'Au revoir!', errLoad: 'Erreur de chargement', noContent: 'Ajoutez un titre ou du texte',
+    saved: 'Note enregistrée', errSave: "Erreur d'enregistrement", selectNote: 'Sélectionnez une note',
+    deleted: 'Note supprimée', errDelete: 'Erreur de suppression', pinned: 'Épinglée', unpinned: 'Désépinglée',
+    errPin: 'Erreur', archived: 'Archivée', unarchived: 'Restaurée', noUndo: 'Rien à annuler',
+    restored: 'Note restaurée', errRestore: 'Erreur de restauration', selectForHistory: "Sélectionnez d'abord une note",
+    errHistory: "Erreur de chargement de l'historique", versionRestored: 'Version restaurée — appuyez sur Enregistrer',
+    noNotes: 'Aucune note', randomNote: '🎲 Note aléatoire!', focusMode: 'Mode focus — Escape pour quitter',
+    ctxPinned: 'Épinglée', ctxUnpinned: 'Désépinglée', ctxArchived: 'Archivée', ctxRestored: 'Restaurée', ctxDeleted: 'Supprimée',
+    draftRestored: 'Brouillon restauré', exported: 'Exporté', errImport: "Erreur d'importation",
+    deleteConfirm: 'Supprimer', restoreVersionConfirm: 'Restaurer cette version? Le texte actuel sera remplacé.',
+    undoHint: 'Note supprimée',
   },
   pl: {
     appTitle: 'Notes App', templates: 'Szablony', search: 'Szukaj… (Alt+F)',
@@ -142,6 +199,17 @@ const APP_I18N = {
     hkNav: 'Nawigacja', hkSearch: 'Fokus wyszukiwania', hkRandom: 'Losowa notatka', hkClose: 'Zamknij',
     hkTags: 'Tagi', hkAddTag: 'Dodaj tag', hkAddTagAlt: 'Dodaj tag (alt)', hkRemoveTag: 'Usuń ostatni tag',
     hkTip: 'Alt zamiast Ctrl — aby uniknąć konfliktów z przeglądarką',
+    welcome: 'Witaj', bye: 'Do widzenia!', errLoad: 'Błąd ładowania', noContent: 'Dodaj tytuł lub tekst',
+    saved: 'Notatka zapisana', errSave: 'Błąd zapisu', selectNote: 'Wybierz notatkę',
+    deleted: 'Notatka usunięta', errDelete: 'Błąd usuwania', pinned: 'Przypięto', unpinned: 'Odepięto',
+    errPin: 'Błąd', archived: 'Zarchiwizowano', unarchived: 'Przywrócono', noUndo: 'Brak akcji do cofnięcia',
+    restored: 'Notatka przywrócona', errRestore: 'Błąd przywracania', selectForHistory: 'Najpierw wybierz notatkę',
+    errHistory: 'Błąd ładowania historii', versionRestored: 'Wersja przywrócona — naciśnij Zapisz',
+    noNotes: 'Brak notatek', randomNote: '🎲 Losowa notatka!', focusMode: 'Tryb skupienia — Escape aby wyjść',
+    ctxPinned: 'Przypięto', ctxUnpinned: 'Odepięto', ctxArchived: 'Zarchiwizowano', ctxRestored: 'Przywrócono', ctxDeleted: 'Usunięto',
+    draftRestored: 'Szkic przywrócony', exported: 'Wyeksportowano', errImport: 'Błąd importu',
+    deleteConfirm: 'Usuń', restoreVersionConfirm: 'Przywrócić tę wersję? Aktualny tekst zostanie zastąpiony.',
+    undoHint: 'Notatka usunięta',
   },
   es: {
     appTitle: 'Notes App', templates: 'Plantillas', search: 'Buscar… (Alt+F)',
@@ -163,6 +231,17 @@ const APP_I18N = {
     hkNav: 'Navegación', hkSearch: 'Enfocar búsqueda', hkRandom: 'Nota aleatoria', hkClose: 'Cerrar',
     hkTags: 'Etiquetas', hkAddTag: 'Añadir etiqueta', hkAddTagAlt: 'Añadir etiqueta (alt)', hkRemoveTag: 'Eliminar última etiqueta',
     hkTip: 'Alt en lugar de Ctrl — para evitar conflictos con el navegador',
+    welcome: 'Bienvenido', bye: '¡Hasta luego!', errLoad: 'Error de carga', noContent: 'Agrega título o texto',
+    saved: 'Nota guardada', errSave: 'Error al guardar', selectNote: 'Selecciona una nota',
+    deleted: 'Nota eliminada', errDelete: 'Error al eliminar', pinned: 'Fijada', unpinned: 'Desfijada',
+    errPin: 'Error', archived: 'Archivada', unarchived: 'Restaurada', noUndo: 'Nada que deshacer',
+    restored: 'Nota restaurada', errRestore: 'Error al restaurar', selectForHistory: 'Selecciona una nota primero',
+    errHistory: 'Error al cargar el historial', versionRestored: 'Versión restaurada — presiona Guardar',
+    noNotes: 'Sin notas', randomNote: '🎲 ¡Nota aleatoria!', focusMode: 'Modo enfoque — Escape para salir',
+    ctxPinned: 'Fijada', ctxUnpinned: 'Desfijada', ctxArchived: 'Archivada', ctxRestored: 'Restaurada', ctxDeleted: 'Eliminada',
+    draftRestored: 'Borrador restaurado', exported: 'Exportado', errImport: 'Error de importación',
+    deleteConfirm: 'Eliminar', restoreVersionConfirm: '¿Restaurar esta versión? El texto actual será reemplazado.',
+    undoHint: 'Nota eliminada',
   },
   zh: {
     appTitle: 'Notes App', templates: '模板', search: '搜索… (Alt+F)',
@@ -184,6 +263,17 @@ const APP_I18N = {
     hkNav: '导航', hkSearch: '聚焦搜索', hkRandom: '随机笔记', hkClose: '关闭',
     hkTags: '标签', hkAddTag: '添加标签', hkAddTagAlt: '添加标签（备选）', hkRemoveTag: '删除最后标签',
     hkTip: '使用 Alt 而非 Ctrl — 避免与浏览器冲突',
+    welcome: '欢迎', bye: '再见！', errLoad: '加载错误', noContent: '请添加标题或内容',
+    saved: '笔记已保存', errSave: '保存错误', selectNote: '请选择笔记',
+    deleted: '笔记已删除', errDelete: '删除错误', pinned: '已置顶', unpinned: '已取消置顶',
+    errPin: '错误', archived: '已归档', unarchived: '已恢复', noUndo: '无可撤销操作',
+    restored: '笔记已恢复', errRestore: '恢复错误', selectForHistory: '请先选择笔记',
+    errHistory: '历史加载错误', versionRestored: '版本已恢复 — 请按保存',
+    noNotes: '暂无笔记', randomNote: '🎲 随机笔记！', focusMode: '专注模式 — 按 Escape 退出',
+    ctxPinned: '已置顶', ctxUnpinned: '已取消置顶', ctxArchived: '已归档', ctxRestored: '已恢复', ctxDeleted: '已删除',
+    draftRestored: '草稿已恢复', exported: '已导出', errImport: '导入错误',
+    deleteConfirm: '删除', restoreVersionConfirm: '恢复此版本？当前内容将被替换。',
+    undoHint: '笔记已删除',
   },
 };
 const THEME_ICONS = {
@@ -424,7 +514,7 @@ createApp({
         this.currentUser = user;
         if (user) {
           this._startListening(user.uid);
-          toast(`Ласкаво просимо, ${user.displayName || user.email}!`, 'success');
+          toast(`${this.at.welcome}, ${user.displayName || user.email}!`, 'success');
         } else {
           this._stopListening();
         }
@@ -433,7 +523,7 @@ createApp({
 
     async handleLogout() {
       await auth.signOut();
-      toast('До побачення!', 'info', 2000);
+      toast(this.at.bye, 'info', 2000);
     },
 
     /* ═══ FIRESTORE ═══════════════════════════════ */
@@ -441,7 +531,7 @@ createApp({
       this._stopListening();
       this._restoreDraft(uid);
       this._unsubscribe = subscribeToNotes(uid, (notes, err) => {
-        if (err) { console.error(err); toast('Помилка завантаження', 'error'); return; }
+        if (err) { console.error(err); toast(this.at.errLoad, 'error'); return; }
         this.allNotes     = notes;
         this.notesLoading = false;
       });
@@ -456,7 +546,7 @@ createApp({
     async handleSave({ title, content, color, tags }) {
       const uid = this.currentUser?.uid;
       if (!uid) return;
-      if (!title && !content) { toast('Додайте назву або текст', 'warning'); return; }
+      if (!title && !content) { toast(this.at.noContent, 'warning'); return; }
       try {
         const isNew = !this.selectedNote?.id;
         const note  = {
@@ -476,20 +566,20 @@ createApp({
         else this.selectedNote = { ...this.selectedNote, title, content, color, tags };
 
         this._clearDraft();
-        toast('Нотатку збережено', 'success');
-      } catch(e) { console.error(e); toast('Помилка збереження', 'error'); }
+        toast(this.at.saved, 'success');
+      } catch(e) { console.error(e); toast(this.at.errSave, 'error'); }
     },
 
     async handleDelete() {
-      if (!this.selectedNote?.id) { toast('Оберіть нотатку', 'warning'); return; }
-      const ok = await confirmModal(`Видалити "${this.selectedNote.title || '(Без назви)'}"?`, { confirmText: 'Видалити', danger: true });
+      if (!this.selectedNote?.id) { toast(this.at.selectNote, 'warning'); return; }
+      const ok = await confirmModal(`${this.at.deleteConfirm} "${this.selectedNote.title || '—'}"?`, { confirmText: this.at.deleteConfirm, danger: true });
       if (!ok) return;
       try {
         this.undoStack.push({ ...this.selectedNote });
         await deleteNote(this.selectedNote.id);
         this.selectedNote = null;
-        toast('Нотатку видалено · Ctrl+Z для відновлення', 'info');
-      } catch { toast('Помилка видалення', 'error'); }
+        toast(this.at.undoHint, 'info');
+      } catch { toast(this.at.errDelete, 'error'); }
     },
 
     async handlePin() {
@@ -498,8 +588,8 @@ createApp({
         const state = !this.selectedNote.pinned;
         await togglePin(this.selectedNote.id, state);
         this.selectedNote = { ...this.selectedNote, pinned: state };
-        toast(state ? 'Закріплено' : 'Відкріплено', 'success');
-      } catch { toast('Помилка', 'error'); }
+        toast(state ? this.at.pinned : this.at.unpinned, 'success');
+      } catch { toast(this.at.errPin, 'error'); }
     },
 
     async handleArchive() {
@@ -508,18 +598,18 @@ createApp({
         const state = !this.selectedNote.archived;
         await toggleArchive(this.selectedNote.id, state);
         this.selectedNote = null;
-        toast(state ? 'В архів' : 'Відновлено', 'success');
-      } catch { toast('Помилка', 'error'); }
+        toast(state ? this.at.archived : this.at.unarchived, 'success');
+      } catch { toast(this.at.errPin, 'error'); }
     },
 
     async handleUndo() {
-      if (!this.undoStack.length) { toast('Немає дій для скасування', 'warning'); return; }
+      if (!this.undoStack.length) { toast(this.at.noUndo, 'warning'); return; }
       const uid = this.currentUser?.uid; if (!uid) return;
       try {
         const { id, ...data } = this.undoStack.pop();
         await saveNote({ ...data, userId: uid });
-        toast('Нотатку відновлено', 'success');
-      } catch { toast('Помилка відновлення', 'error'); }
+        toast(this.at.restored, 'success');
+      } catch { toast(this.at.errRestore, 'error'); }
     },
 
     selectNote(note) { this.selectedNote = note; this.showTemplates = false; },
@@ -538,27 +628,27 @@ createApp({
         } else {
           toast('Публічний доступ закрито', 'info');
         }
-      } catch { toast('Помилка', 'error'); }
+      } catch { toast(this.at.errPin, 'error'); }
     },
 
     /* ═══ ІСТОРІЯ ЗМІН ════════════════════════════ */
     async openHistory() {
-      if (!this.selectedNote?.id) { toast('Спочатку оберіть нотатку', 'warning'); return; }
+      if (!this.selectedNote?.id) { toast(this.at.selectForHistory, 'warning'); return; }
       this.showHistory    = true;
       this.historyLoading = true;
       this.noteHistory    = [];
       try {
         this.noteHistory = await getNoteHistory(this.selectedNote.id);
-      } catch { toast('Помилка завантаження історії', 'error'); }
+      } catch { toast(this.at.errHistory, 'error'); }
       this.historyLoading = false;
     },
 
     async restoreVersion(version) {
-      const ok = await confirmModal('Відновити цю версію? Поточний текст буде замінено.', { confirmText: 'Відновити' });
+      const ok = await confirmModal(this.at.restoreVersionConfirm, { confirmText: this.at.restoreBtn });
       if (!ok) return;
       this.selectedNote = { ...this.selectedNote, title: version.title, content: version.content, color: version.color, tags: version.tags };
       this.showHistory = false;
-      toast('Версію відновлено — натисніть Зберегти', 'info', 3000);
+      toast(this.at.versionRestored, 'info', 3000);
     },
 
     /* ═══ ШАБЛОНИ ═════════════════════════════════ */
@@ -568,7 +658,9 @@ createApp({
       const templates = getNoteTemplates(this.lang);
       const tpl = templates[key]; if (!tpl) return;
       const colors = { meeting: '#4dabf7', task: '#40c057', diary: '#ae3ec9', idea: '#fab005' };
-      this.selectedNote  = { ...tpl, color: colors[key] || '#4dabf7' };
+      // Зберігаємо id якщо нотатка вже існує — щоб шаблон не створював нову
+      const existing = this.selectedNote?.id ? { id: this.selectedNote.id } : {};
+      this.selectedNote  = { ...existing, ...tpl, color: colors[key] || '#4dabf7' };
       this.showTemplates = false;
       toast(`📋 ${tpl.title}`, 'success');
     },
@@ -576,9 +668,9 @@ createApp({
     /* ═══ ВИПАДКОВА НОТАТКА ════════════════════════ */
     openRandomNote() {
       const active = this.allNotes.filter(n => !n.archived);
-      if (!active.length) { toast('Немає нотаток', 'warning'); return; }
+      if (!active.length) { toast(this.at.noNotes, 'warning'); return; }
       this.selectNote(active[Math.floor(Math.random() * active.length)]);
-      toast('🎲 Випадкова нотатка!', 'info', 2000);
+      toast(this.at.randomNote, 'info', 2000);
     },
 
     /* ═══ РЕЖИМ ФОКУСУ ════════════════════════════ */
@@ -586,7 +678,7 @@ createApp({
       this.focusMode = !this.focusMode;
       if (this.focusMode) {
         document.documentElement.requestFullscreen?.().catch(() => {});
-        toast('Режим фокусу — Escape для виходу', 'info', 2500);
+        toast(this.at.focusMode, 'info', 2500);
       } else {
         document.exitFullscreen?.().catch(() => {});
       }
@@ -604,21 +696,21 @@ createApp({
     async ctxPin(note) {
       await togglePin(note.id, !note.pinned);
       if (this.selectedNote?.id === note.id) this.selectedNote = { ...this.selectedNote, pinned: !note.pinned };
-      toast(note.pinned ? 'Відкріплено' : 'Закріплено', 'success');
+      toast(note.pinned ? this.at.ctxUnpinned : this.at.ctxPinned, 'success');
     },
     async ctxArchive(note) {
       await toggleArchive(note.id, !note.archived);
       if (this.selectedNote?.id === note.id) this.selectedNote = null;
-      toast(note.archived ? 'Відновлено' : 'В архів', 'success');
+      toast(note.archived ? this.at.ctxRestored : this.at.ctxArchived, 'success');
     },
     ctxEdit(note) { this.selectedNote = note; },
     async ctxDelete(note) {
-      const ok = await confirmModal(`Видалити "${note.title || '(Без назви)'}"?`, { confirmText: 'Видалити', danger: true });
+      const ok = await confirmModal(`${this.at.deleteConfirm} "${note.title || '—'}"?`, { confirmText: this.at.deleteConfirm, danger: true });
       if (!ok) return;
       this.undoStack.push({ ...note });
       await deleteNote(note.id);
       if (this.selectedNote?.id === note.id) this.selectedNote = null;
-      toast('Видалено', 'info');
+      toast(this.at.ctxDeleted, 'info');
     },
 
     /* ═══ МОВА ════════════════════════════════════ */
@@ -655,7 +747,7 @@ createApp({
         const d = JSON.parse(raw);
         if (d.title || d.content) {
           this.selectedNote = { title: d.title, content: d.content, color: d.color, tags: d.tags || [] };
-          toast('Чорновик відновлено', 'info', 2500);
+          toast(this.at.draftRestored, 'info', 2500);
         }
       } catch { /* ignore */ }
     },
@@ -671,16 +763,16 @@ createApp({
       const a    = Object.assign(document.createElement('a'), { href: url, download: `notes_${Date.now()}.json` });
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      toast(`Експортовано ${this.allNotes.length} нотаток`, 'success');
+      toast(`${this.at.exported}: ${this.allNotes.length}`, 'success');
     },
     async handleImport(file) {
       const uid = this.currentUser?.uid; if (!uid) return;
       try {
         const notes = JSON.parse(await file.text());
-        if (!Array.isArray(notes)) throw new Error('Файл повинен містити масив');
+        if (!Array.isArray(notes)) throw new Error(this.at.errImport);
         const count = await importNotes(notes, uid);
-        toast(`Імпортовано ${count} нотаток`, 'success');
-      } catch (err) { toast(`Помилка імпорту: ${err.message}`, 'error'); }
+        toast(`${this.at.exported}: ${count}`, 'success');
+      } catch (err) { toast(`${this.at.errImport}: ${err.message}`, 'error'); }
     },
 
     /* ═══ ГАРЯЧІ КЛАВІШІ ══════════════════════════ */
