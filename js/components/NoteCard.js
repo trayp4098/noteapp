@@ -22,7 +22,7 @@ export default {
   },
   template: `
     <div
-      class="note-card anim-fade-up"
+      class="note-card"
       :class="{ selected: isSelected, 'card-grid': viewMode === 'grid' }"
       :style="cardStyle"
       @click="$emit('select', note)"
