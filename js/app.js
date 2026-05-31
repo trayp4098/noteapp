@@ -353,6 +353,7 @@ createApp({
       allNotes:        [],
       notesLoading:    true,
       drawerOpen:      false,
+      mobileScreen:    'list', // 'list' | 'editor'
       selectedNote:    null,
       undoStack:       [],
       _unsubscribe:    null,
@@ -559,7 +560,6 @@ createApp({
         const savedId = await saveNote(note);
         const finalId = this.selectedNote?.id || savedId;
 
-        // Зберегти версію в історію
         await saveNoteHistory(finalId, { title, content, color, tags, savedAt: new Date().toISOString() });
 
         if (isNew) this.selectedNote = { ...note, id: savedId };
@@ -612,7 +612,11 @@ createApp({
       } catch { toast(this.at.errRestore, 'error'); }
     },
 
-    selectNote(note) { this.selectedNote = note; this.showTemplates = false; },
+    selectNote(note) {
+      this.selectedNote = note;
+      this.showTemplates = false;
+      this.mobileScreen = 'editor';
+    },
 
     /* ═══ ПУБЛІЧНА ССИЛКА ══════════════════════════ */
     async togglePublic() {
@@ -658,10 +662,10 @@ createApp({
       const templates = getNoteTemplates(this.lang);
       const tpl = templates[key]; if (!tpl) return;
       const colors = { meeting: '#4dabf7', task: '#40c057', diary: '#ae3ec9', idea: '#fab005' };
-      // Зберігаємо id якщо нотатка вже існує — щоб шаблон не створював нову
       const existing = this.selectedNote?.id ? { id: this.selectedNote.id } : {};
       this.selectedNote  = { ...existing, ...tpl, color: colors[key] || '#4dabf7' };
       this.showTemplates = false;
+      this.mobileScreen  = 'editor';
       toast(`📋 ${tpl.title}`, 'success');
     },
 
@@ -792,6 +796,7 @@ createApp({
             this.showStats = this.showProfile = this.showHistory = this.showHotkeys = false; return;
           }
           if (this.drawerOpen) { this.drawerOpen = false; return; }
+          if (this.mobileScreen === 'editor') { this.mobileScreen = 'list'; return; }
           if (this.focusMode) { this.toggleFocusMode(); return; }
           this.selectedNote = null; this.ctxNote = null; this.showTemplates = false;
         }
@@ -817,12 +822,17 @@ createApp({
     <template v-else>
 
       <div v-show="!focusMode" id="app-header" class="glass-panel">
-        <h1><i class="ph ph-notebook"></i> {{ at.appTitle }}</h1>
+        <div class="header-left">
+          <h1><i class="ph ph-notebook"></i> {{ at.appTitle }}</h1>
+          <button v-if="mobileScreen === 'editor'" class="btn btn-mobile-back-inline" @click="mobileScreen = 'list'">
+            <i class="ph ph-arrow-left"></i>
+          </button>
+        </div>
         <div class="top-right">
 
           <div style="position:relative">
             <button ref="templateBtn" class="btn" title="Шаблони" @click="toggleTemplates">
-              <i class="ph ph-layout"></i> {{ at.templates }}
+              <i class="ph ph-layout"></i> <span class="btn-templates-text">{{ at.templates }}</span>
             </button>
           </div>
 
@@ -844,8 +854,12 @@ createApp({
             <span>{{ displayName }}</span>
           </div>
 
-          <button class="btn" title="Гарячі клавіші (?)" @click="showHotkeys = true">
+          <button class="btn btn-hotkeys-help" title="Гарячі клавіші (?)" @click="showHotkeys = true">
             <i class="ph ph-question"></i>
+          </button>
+
+          <button class="btn-mobile-new" title="Нова нотатка" @click="selectedNote = {}; mobileScreen = 'editor'">
+            <i class="ph ph-plus"></i>
           </button>
 
           <button class="btn" :title="'Тема: ' + theme" @click="nextTheme">
@@ -868,13 +882,7 @@ createApp({
         <i class="ph ph-arrows-in-simple"></i>
       </button>
 
-      <!-- Мобільна кнопка відкрити сайдбар -->
-      <button class="btn-drawer-open" title="Нотатки" @click="drawerOpen = !drawerOpen">
-        <i class="ph ph-list"></i>
-      </button>
-      <div v-if="drawerOpen" class="drawer-overlay" @click="drawerOpen = false"></div>
-
-      <div id="app-container">
+      <div id="app-container" :class="'mobile-' + mobileScreen">
         <template v-if="!focusMode">
           <note-list
             :notes="filteredNotes" :all-notes="allNotes"
@@ -885,10 +893,10 @@ createApp({
             :active-filters-count="activeFiltersCount"
             :loading="notesLoading"
             :lang="lang"
-            :class="{ 'drawer-open': drawerOpen }"
+            class="mobile-panel"
             @update:filterMode="filterMode = $event"
             @update:searchQuery="searchQuery = $event"
-            @select="selectNote($event); drawerOpen = false"
+            @select="selectNote"
             @contextmenu="showContextMenu"
             @set-color-filter="setColorFilter"
             @set-date-filter="setDateFilter"
@@ -900,12 +908,13 @@ createApp({
           ref="editor" v-model="selectedNote"
           :focus-mode="focusMode"
           :lang="lang"
+          class="mobile-panel"
           @save="handleSave" @delete="handleDelete"
           @pin="handlePin" @archive="handleArchive"
           @undo="handleUndo" @export="handleExport" @import="handleImport"
           @toggle-public="togglePublic"
           @open-history="openHistory"
-          @new-note="selectedNote = {}"
+          @new-note="selectedNote = {}; mobileScreen = 'editor'"
         />
       </div>
 
@@ -917,6 +926,7 @@ createApp({
       </div>
 
       <!-- Шаблони -->
+      <div v-if="showTemplates" class="overlay-close" @click="showTemplates = false"></div>
       <div v-if="showTemplates" class="templates-dropdown" :style="templatesPos">
         <div class="templates-title">{{ at.templates }}</div>
         <button class="template-item" @click="applyTemplate('meeting')"><i class="ph ph-calendar"></i> {{ at.meetingTpl }}</button>
@@ -924,13 +934,13 @@ createApp({
         <button class="template-item" @click="applyTemplate('diary')"><i class="ph ph-book-open"></i> {{ at.diaryTpl }}</button>
         <button class="template-item" @click="applyTemplate('idea')"><i class="ph ph-lightbulb"></i> {{ at.ideaTpl }}</button>
         <div class="templates-hint">{{ at.emptyTpl }}</div>
-        <button class="template-item" style="border-top:1px solid var(--border-color);margin-top:2px" @click="selectedNote = {}; showTemplates = false">
+        <button class="template-item" style="border-top:1px solid var(--border-color);margin-top:2px" @click="selectedNote = {}; showTemplates = false; mobileScreen = 'editor'">
           <i class="ph ph-note-blank"></i> {{ at.blankNote }}
         </button>
       </div>
-      <div v-if="showTemplates" class="overlay-close" @click="showTemplates = false"></div>
 
       <!-- Мова — фіксований дропдаун поза хедером -->
+      <div v-if="showLangMenu" class="overlay-close" @click="showLangMenu = false"></div>
       <div v-if="showLangMenu" class="templates-dropdown" :style="langMenuPos">
         <div class="templates-title">Мова / Language</div>
         <button v-for="l in [{code:'uk',flag:'🇺🇦',label:'Українська'},{code:'en',flag:'🇬🇧',label:'English'},{code:'ru',flag:'🇷🇺',label:'Русский'},{code:'de',flag:'🇩🇪',label:'Deutsch'},{code:'fr',flag:'🇫🇷',label:'Français'},{code:'pl',flag:'🇵🇱',label:'Polski'},{code:'es',flag:'🇪🇸',label:'Español'},{code:'zh',flag:'🇨🇳',label:'中文'}]"
@@ -940,7 +950,6 @@ createApp({
           <i v-if="lang === l.code" class="ph ph-check" style="margin-left:auto;color:var(--accent)"></i>
         </button>
       </div>
-      <div v-if="showLangMenu" class="overlay-close" @click="showLangMenu = false"></div>
 
       <context-menu v-if="ctxNote" :note="ctxNote" :x="ctxX" :y="ctxY"
         @pin="ctxPin" @archive="ctxArchive" @edit="ctxEdit" @delete="ctxDelete" @close="closeContextMenu" />
