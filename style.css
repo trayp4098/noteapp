@@ -922,20 +922,7 @@ body:-webkit-full-screen #note-editor {
 
 /* ====== TOOLTIPS ====== */
 [title] { position: relative; }
-.btn[title]::after {
-  content: attr(title);
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%; transform: translateX(-50%);
-  background: rgba(0,0,0,.85);
-  color: #fff; font-size: .7rem; font-weight: 500;
-  padding: 4px 8px; border-radius: 6px;
-  white-space: nowrap; pointer-events: none;
-  opacity: 0; transition: opacity .15s ease;
-  z-index: 9999;
-  backdrop-filter: blur(4px);
-}
-.btn[title]:hover::after { opacity: 1; }
+/* tooltips removed */
 
 /* ====== МОБІЛЬНИЙ DRAWER ====== */
 @media (max-width: 820px) {
@@ -1094,7 +1081,6 @@ body:-webkit-full-screen #note-editor {
   .btn-drawer-open { display: flex !important; }
 
   /* Прибираємо tooltip на мобільних */
-  .btn[title]::after { display: none !important; }
 }
 
 /* Ховаємо плаваючу кнопку на десктопі */
@@ -1204,4 +1190,456 @@ kbd {
 .lang-dropdown {
   position: fixed !important;
   z-index: 19000 !important;
+}
+
+/* ══════════════════════════════════════════
+   МОБІЛЬНИЙ АДАПТИВ — окремі екрани ≤768px
+══════════════════════════════════════════ */
+
+/* Кнопка назад — прихована на десктопі */
+.btn-mobile-back {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
+  color: var(--text) !important;
+  cursor: pointer; font-size: .95rem;
+  padding: 0 !important;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.btn-mobile-back:hover { background: rgba(255,255,255,.22) !important; }
+
+@media (max-width: 768px) {
+
+  /* ── Контейнер — звичайний flex ── */
+  #app-container {
+    flex-direction: row !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+    width: 100vw !important;
+    min-width: 0 !important;
+    position: relative !important;
+  }
+
+  /* Показуємо список */
+  #app-container.mobile-list #sidebar   { display: flex !important; }
+  #app-container.mobile-list #note-editor { display: none !important; }
+
+  /* Показуємо редактор */
+  #app-container.mobile-editor #sidebar    { display: none !important; }
+  #app-container.mobile-editor #note-editor { display: flex !important; }
+
+  /* Кожна панель — повна ширина */
+  #app-container .mobile-panel {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    flex-shrink: 0 !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Сайдбар — скидаємо drawer */
+  #sidebar {
+    position: relative !important;
+    transform: none !important;
+    max-width: none !important;
+    z-index: auto !important;
+    padding: 10px 12px !important;
+  }
+
+  /* Редактор */
+  #note-editor {
+    padding: 10px 12px !important;
+  }
+
+  /* ── Хедер ── */
+  #app-header {
+    padding: 6px 10px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    gap: 6px !important;
+    flex-shrink: 0;
+  }
+
+  #app-header h1 { font-size: .9rem !important; }
+
+  .top-right {
+    gap: 3px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Всі кнопки хедера — тільки іконка */
+  .top-right .btn {
+    padding: 5px 7px !important;
+    font-size: .8rem !important;
+    gap: 0 !important;
+    min-width: 0 !important;
+  }
+
+  /* Приховуємо текст у кнопках хедера */
+  .top-right .btn > span,
+  .top-right .btn > i + span { display: none !important; }
+
+  /* Аватар і ім'я */
+  .user-info span { display: none !important; }
+  .user-avatar, .user-avatar-placeholder { width: 24px !important; height: 24px !important; }
+
+  /* ── Кнопка назад ── */
+  .btn-mobile-back { display: flex !important; }
+
+  /* ── Кнопки редактора ── */
+  .btn-label { display: none !important; }
+
+  .buttons {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 5px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .buttons .btn {
+    flex-shrink: 0 !important;
+    padding: 8px 11px !important;
+    min-width: 0 !important;
+    font-size: .82rem !important;
+  }
+
+  /* ── Статус-бар ── */
+  #status-bar {
+    font-size: .7rem !important;
+    padding: 4px 10px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* ── Фільтри ── */
+  .filter-buttons .btn {
+    padding: 5px 7px !important;
+    font-size: .72rem !important;
+  }
+
+  /* ── Textarea ── */
+  .editor-split { min-height: 180px !important; }
+
+  /* ── Tooltips ── */
+
+  /* ── Приховуємо старий drawer ── */
+  .btn-drawer-open { display: none !important; }
+  .drawer-overlay  { display: none !important; }
+
+  /* ── Grid в 1 колонку ── */
+  .note-list-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-mobile-back { display: none !important; }
+  /* Скидаємо мобільний width */
+  #app-container {
+    width: auto !important;
+    min-width: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Header left group ── */
+.header-left {
+  display: flex; align-items: center; gap: 8px;
+}
+
+@media (max-width: 768px) {
+  /* note-editor как flex-child должен заполнять панель */
+  #app-container .mobile-panel#note-editor {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Кнопка назад в хедере */
+  .btn-mobile-back {
+    display: none;
+    align-items: center; justify-content: center;
+  }
+  .btn-mobile-back { display: flex; }
+}
+
+@media (max-width: 768px) {
+  /* 1. Забороняємо горизонтальний скрол на body */
+  html, body {
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none !important;
+  }
+
+  /* Контейнер не виходить за межі */
+  #app {
+    overflow-x: hidden !important;
+  }
+
+  /* 2. More-dropdown на мобільному — відкривається вгору і не виходить за екран */
+  .more-dropdown {
+    position: fixed !important;
+    bottom: 70px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    z-index: 10500 !important;
+    top: auto !important;
+  }
+
+  /* 3. Кнопка ? прихована на мобільному */
+  .btn-hotkeys-help { display: none !important; }
+
+  /* 3. Кнопка + видима на мобільному */
+  .btn-mobile-new { display: flex !important; }
+}
+
+/* Кнопка + нова нотатка — прихована на десктопі */
+.btn-mobile-new {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50% !important;
+  background: var(--accent) !important;
+  border: none !important;
+  color: #fff !important;
+  cursor: pointer; font-size: 1.05rem;
+  padding: 0 !important;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+/* ====== МЕДІА ТУЛБАР ====== */
+.media-toolbar {
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0; flex-wrap: wrap;
+}
+
+.btn-media {
+  background: rgba(255,255,255,.07) !important;
+  border-color: rgba(255,255,255,.15) !important;
+  padding: 6px 12px !important;
+  font-size: .82rem !important;
+  gap: 5px !important;
+}
+.btn-media:hover { background: rgba(255,255,255,.14) !important; }
+
+.btn-recording {
+  background: rgba(255,60,60,.2) !important;
+  border-color: rgba(255,60,60,.45) !important;
+  color: #ff8080 !important;
+  animation: pulse-rec 1s ease infinite;
+}
+@keyframes pulse-rec {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .65; }
+}
+
+.media-uploading {
+  font-size: .78rem; color: var(--accent);
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* ====== ВКЛАДЕННЯ ====== */
+.attachments-section {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--glass);
+  border: 1px solid var(--border-color);
+  border-radius: 10px; padding: 10px 12px;
+}
+
+.attachments-title {
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.audio-item {
+  display: flex; align-items: center; gap: 8px;
+}
+
+.audio-player {
+  flex: 1; height: 32px;
+  border-radius: 8px;
+  accent-color: var(--accent);
+}
+
+.btn-remove-att {
+  background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: .85rem; padding: 2px 4px;
+  flex-shrink: 0; border-radius: 6px;
+  transition: color .13s, background .13s;
+}
+.btn-remove-att:hover { color: var(--danger); background: rgba(255,80,80,.1); }
+
+/* Зображення в MD preview */
+.md-preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 6px 0;
+  display: block;
+}
+
+/* Мобільний — медіа тулбар */
+@media (max-width: 768px) {
+  .btn-media .btn-label { display: none !important; }
+  .btn-media { padding: 7px 10px !important; }
+}
+
+/* ====== КОСМЕТИЧНИЙ РЕМОНТ ====== */
+
+/* 1. Однакова висота хедера і сайдбару — вирівнюємо padding */
+#app-header {
+  padding: 10px 16px !important;
+}
+#sidebar {
+  padding: 10px 16px !important;
+}
+
+/* 2. Tooltips — не виходять за межі екрану */
+/* 3. Мобільний: кнопка + як звичайна btn */
+@media (max-width: 768px) {
+  /* Кнопка + — стиль як інші кнопки хедера */
+  .btn-mobile-new {
+    width: auto !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    background: rgba(255,255,255,.10) !important;
+    border: 1px solid rgba(255,255,255,.20) !important;
+    color: var(--text) !important;
+    padding: 5px 7px !important;
+    font-size: .8rem !important;
+    box-shadow: none !important;
+  }
+  .btn-mobile-new:hover {
+    background: rgba(255,255,255,.18) !important;
+  }
+
+  /* Кнопка шаблонів — тільки іконка */
+  .btn-templates-text { display: none !important; }
+
+  /* Кнопка назад — справа (margin-left:auto) */
+  .header-left {
+    margin-left: auto;
+    order: 2;
+  }
+  #app-header .top-right {
+    order: 1;
+    flex: 1;
+  }
+  /* Приховуємо назву додатку на мобільному в редакторі */
+  .btn-mobile-back ~ h1 { display: none !important; }
+}
+
+
+/* ====== МОБІЛЬНИЙ ХЕДЕР ====== */
+.btn-mobile-back-inline {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 8px !important;
+  background: rgba(255,255,255,.10) !important;
+  border: 1px solid rgba(255,255,255,.20) !important;
+  color: var(--text) !important;
+  cursor: pointer; font-size: .8rem;
+  padding: 0 !important;
+  flex-shrink: 0;
+  transition: none;
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  /* Хедер — 2 рядки */
+  #app-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 8px 12px !important;
+    gap: 6px !important;
+  }
+
+  /* Рядок 1: лого по центру + кнопка назад справа */
+  .header-left {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .header-left h1 {
+    font-size: .95rem !important;
+    justify-content: center !important;
+  }
+
+  .btn-mobile-back-inline {
+    display: flex !important;
+  }
+
+  /* Рядок 2: кнопки */
+  #app-header .top-right {
+    order: 2 !important;
+    flex: none !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 4px !important;
+    align-items: center !important;
+  }
+
+  /* Кнопка виходу — зліва і менша */
+  .top-right .btn.delete {
+    order: -1 !important;
+    padding: 4px 7px !important;
+    font-size: .78rem !important;
+  }
+
+  /* Всі кнопки top-right — компактні */
+  .top-right .btn {
+    padding: 4px 7px !important;
+    font-size: .78rem !important;
+  }
+}
+
+/* ====== ПРОФІЛЬ — stats по центру ====== */
+.profile-body .stats-grid {
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  /* Прибираємо всі tooltips */
+
+  /* Кнопка ← — зліва */
+  .btn-mobile-back-inline {
+    right: auto !important;
+    left: 0 !important;
+  }
+}
+
+/* ====== МОБІЛЬНИЙ: шаблони поверх transform-контейнера ====== */
+@media (max-width: 768px) {
+  .templates-dropdown {
+    z-index: 99999 !important;
+  }
+  .overlay-close {
+    z-index: 99998 !important;
+  }
+  .lang-dropdown {
+    z-index: 99999 !important;
+  }
 }
